@@ -2,6 +2,7 @@ package com.sidrakotlin.task
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -38,6 +39,7 @@ class ProductAdapter(val listener:updateClick, private val context: Context):
                 .setPositiveButton("Update", { dialogInterface, i ->
 
                     listener.update(products)
+
 
                 })
                 .setNegativeButton("Delete", {

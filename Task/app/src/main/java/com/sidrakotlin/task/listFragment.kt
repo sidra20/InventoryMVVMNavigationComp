@@ -51,8 +51,17 @@ class listFragment : Fragment(),ProductAdapter.updateClick {
 
     override fun update(product: Product) {
 
-        viewModel.editData(product)
-        findNavController().navigate(R.id.action_listFragment_to_productFragment)
+        //viewModel.editData(product)
+
+        val bundle = Bundle()
+        val name = bundle.putString("pname", product.name)
+        val price = bundle.putDouble("price", product.price!!)
+        val qty =bundle.putInt("qty", product.qty!!)
+
+        val action = listFragmentDirections.actionListFragmentToProductFragment(name.toString(),price.toString() , qty.toString())
+
+        findNavController().navigate(action)
+
     }
 
     override fun delete(product: Product) {

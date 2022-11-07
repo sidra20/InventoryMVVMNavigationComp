@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.sidrakotlin.task.databinding.FragmentProductBinding
 
 
@@ -16,6 +17,9 @@ class productFragment : Fragment() {
 
     private lateinit var viewModel: ViewModel
     private lateinit var binding: FragmentProductBinding
+
+    val args:productFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +30,19 @@ class productFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
 
-        binding.viewModel = viewModel
+//        if(getArguments() != null) {
+//            var name = args.productname
+//            var price = args.price
+//            var qty = args.qty
+//
+//            binding.prodNameEt.setText(name)
+//            binding.prodPriceEt.setText(price)
+//            binding.prodQtyEt.setText(qty)
+//        }
+
+        binding.viewModel=viewModel
         binding.lifecycleOwner=this
+
 
 //        if(viewModel.isUpdate==true)
 //        {
@@ -36,6 +51,13 @@ class productFragment : Fragment() {
 //            binding.prodPriceEt.setText(viewModel.price.value)
 //            binding.prodQtyEt.setText(viewModel.qty.value)
 //        }
+
+
+
+
+        binding.cancel.setOnClickListener {
+            findNavController().navigate(R.id.action_productFragment_to_listFragment)
+        }
         return binding.root
     }
 

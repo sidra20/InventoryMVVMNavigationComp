@@ -46,6 +46,7 @@ class ViewModel(app:Application) : AndroidViewModel(app) {
     fun saveData()
     {
 
+
         if(proName.value!!.isNotEmpty() && price.value!!.isNotEmpty() && qty.value!!.isNotEmpty())
         {
             val name = proName.value!!.toString()
