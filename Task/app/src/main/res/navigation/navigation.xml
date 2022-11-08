@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/allproductsFragment">
+
+    <fragment
+        android:id="@+id/allproductsFragment"
+        android:name="com.sidrakotlin.task.allproductsFragment"
+        android:label="Inventory"
+        tools:layout="@layout/fragment_allproducts">
+        <action
+            android:id="@+id/action_allproductsFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_allproductsFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.sidrakotlin.task.addFragment"
+        android:label="Add Product"
+        tools:layout="@layout/fragment_add">
+        <action
+            android:id="@+id/action_addFragment_to_allproductsFragment"
+            app:destination="@id/allproductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.sidrakotlin.task.UpdateFragment"
+        android:label="Edit Product"
+        tools:layout="@layout/fragment_update">
+        <action
+            android:id="@+id/action_updateFragment_to_allproductsFragment"
+            app:destination="@id/allproductsFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="pname"
+            app:argType="string" />
+        <argument
+            android:name="pprice"
+            app:argType="string" />
+        <argument
+            android:name="pqty"
+            app:argType="string" />
+    </fragment>
+</navigation>
