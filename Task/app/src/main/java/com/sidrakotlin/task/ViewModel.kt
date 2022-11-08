@@ -6,7 +6,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavArgs
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.navigation.navArgument
 import kotlinx.coroutines.launch
 
 class ViewModel(app:Application) : AndroidViewModel(app) {
@@ -23,6 +26,8 @@ class ViewModel(app:Application) : AndroidViewModel(app) {
     
     var isUpdate = false
 
+
+
     fun insert(product: Product) = viewModelScope.launch {
         repository.insert(product)
     }
@@ -35,13 +40,42 @@ class ViewModel(app:Application) : AndroidViewModel(app) {
         repository.update(product)
     }
 
-    fun editData(product: Product)
-    {
-        isUpdate=true
-        proName.value = product.name!!
-        price.value = ""+product.price
-        qty.value=""+product.qty
+//    fun editData(product: Product)
+//    {
+//        isUpdate=true
+//        proName.value = product.name!!
+//        price.value = ""+product.price
+//        qty.value=""+product.qty
+//
+//    }
+    fun updateData()
 
+    {
+
+//        var fragment =  editFragment()
+//        val arg = fragment.args
+//        var productid = arg.id
+//        var idCv = productid.toInt()
+        if(proName.value!!.isNotEmpty() && price.value!!.isNotEmpty() && qty.value!!.isNotEmpty())
+        {
+            val name = proName.value!!.toString()
+            val proprice = price.value!!.toDouble()
+            val proqty = qty.value!!.toInt()
+            val obj = Product(0,name,proprice,proqty)
+            update(obj)
+
+            Toast.makeText(getApplication(),"Product updated", Toast.LENGTH_SHORT).show()
+
+            proName.value=""
+            price.value=""
+            qty.value=""
+
+
+        }
+        else{
+            Toast.makeText(getApplication(),"Required!", Toast.LENGTH_SHORT).show()
+
+        }
     }
     fun saveData()
     {

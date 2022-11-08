@@ -18,8 +18,6 @@ class productFragment : Fragment() {
     private lateinit var viewModel: ViewModel
     private lateinit var binding: FragmentProductBinding
 
-    val args:productFragmentArgs by navArgs()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
